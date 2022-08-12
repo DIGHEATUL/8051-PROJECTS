@@ -1,0 +1,178 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    05/22/2022  13:15:05  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\CODE.obj TO .\Objects\GAS DETECTOR USING 8051 PRINT (.\Listings\GAS DETECTOR USING
+>>  8051.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\CODE.obj (CODE)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDPTR)
+
+
+LINK MAP OF MODULE:  .\Objects\GAS DETECTOR USING 8051 (CODE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0035H     UNIT         ?PR?MAIN?CODE
+            CODE    0835H     0031H     UNIT         ?CO?CODE
+            CODE    0866H     0025H     UNIT         ?PR?_LCD_STRING?CODE
+            CODE    088BH     0019H     UNIT         ?PR?LCD_INIT?CODE
+            CODE    08A4H     0019H     UNIT         ?C?LIB_CODE
+            CODE    08BDH     000FH     UNIT         ?PR?DELAY?CODE
+            CODE    08CCH     000EH     UNIT         ?PR?_CMD?CODE
+            CODE    08DAH     000EH     UNIT         ?PR?_DAT?CODE
+            CODE    08E8H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\GAS DETECTOR USING 8051 (CODE)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?CODE
+
+?PR?MAIN?CODE                  -----    -----
+  +--> ?PR?LCD_INIT?CODE
+  +--> ?CO?CODE
+  +--> ?PR?_LCD_STRING?CODE
+  +--> ?PR?_CMD?CODE
+  +--> ?PR?DELAY?CODE
+
+?PR?LCD_INIT?CODE              -----    -----
+  +--> ?PR?_CMD?CODE
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/22/2022  13:15:05  PAGE 2
+
+
+
+?PR?_CMD?CODE                  -----    -----
+  +--> ?PR?DELAY?CODE
+
+?PR?_LCD_STRING?CODE           0008H    0003H
+  +--> ?PR?_DAT?CODE
+
+?PR?_DAT?CODE                  -----    -----
+  +--> ?PR?DELAY?CODE
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\GAS DETECTOR USING 8051 (CODE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CODE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:08BDH         PUBLIC        delay
+  C:0800H         PUBLIC        main
+  C:0866H         PUBLIC        _lcd_string
+  C:08CCH         PUBLIC        _cmd
+  C:08DAH         PUBLIC        _dat
+  C:088BH         PUBLIC        lcd_init
+  B:00A0H.2       PUBLIC        en
+  B:00A0H.3       PUBLIC        GAS
+  B:00A0H.0       PUBLIC        rs
+  B:00A0H.1       PUBLIC        rw
+  -------         PROC          MAIN
+  C:0800H         LINE#         20
+  C:0800H         LINE#         21
+  C:0800H         LINE#         22
+  C:0803H         LINE#         23
+  C:080CH         LINE#         24
+  C:080CH         LINE#         25
+  C:080FH         LINE#         26
+  C:0814H         LINE#         27
+  C:081DH         LINE#         29
+  C:0820H         LINE#         30
+  C:0822H         LINE#         31
+  C:0827H         LINE#         32
+  C:0830H         LINE#         33
+  C:0833H         LINE#         34
+  C:0833H         LINE#         35
+  -------         ENDPROC       MAIN
+  -------         PROC          LCD_INIT
+  C:088BH         LINE#         38
+  C:088BH         LINE#         39
+  C:088BH         LINE#         40
+  C:0890H         LINE#         41
+  C:0895H         LINE#         42
+  C:089AH         LINE#         43
+  C:089FH         LINE#         44
+  -------         ENDPROC       LCD_INIT
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/22/2022  13:15:05  PAGE 3
+
+
+  -------         PROC          _CMD
+  D:0007H         SYMBOL        a
+  C:08CCH         LINE#         47
+  C:08CCH         LINE#         48
+  C:08CCH         LINE#         49
+  C:08CEH         LINE#         50
+  C:08D0H         LINE#         51
+  C:08D2H         LINE#         52
+  C:08D4H         LINE#         53
+  C:08D7H         LINE#         54
+  C:08D9H         LINE#         55
+  -------         ENDPROC       _CMD
+  -------         PROC          _DAT
+  D:0007H         SYMBOL        b
+  C:08DAH         LINE#         57
+  C:08DAH         LINE#         58
+  C:08DAH         LINE#         59
+  C:08DCH         LINE#         60
+  C:08DEH         LINE#         61
+  C:08E0H         LINE#         62
+  C:08E2H         LINE#         63
+  C:08E5H         LINE#         64
+  C:08E7H         LINE#         65
+  -------         ENDPROC       _DAT
+  -------         PROC          _LCD_STRING
+  D:0008H         SYMBOL        s
+  C:0866H         LINE#         67
+  C:086CH         LINE#         68
+  C:086CH         LINE#         69
+  C:0877H         LINE#         70
+  C:0888H         LINE#         71
+  C:088AH         LINE#         72
+  -------         ENDPROC       _LCD_STRING
+  -------         PROC          DELAY
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:08BDH         LINE#         74
+  C:08BDH         LINE#         75
+  C:08BDH         LINE#         77
+  C:08CBH         LINE#         78
+  -------         ENDPROC       DELAY
+  -------         ENDMOD        CODE
+
+  -------         MODULE        ?C?CLDPTR
+  C:08A4H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00CFH BYTE (10%) *
+******************************************************************************
+
+Program Size: data=12.0 xdata=0 code=247
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

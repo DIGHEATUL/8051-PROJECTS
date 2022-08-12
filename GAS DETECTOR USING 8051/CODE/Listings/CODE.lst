@@ -1,0 +1,104 @@
+C51 COMPILER V9.59.0.0   CODE                                                              05/22/2022 13:15:05 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE CODE
+OBJECT MODULE PLACED IN .\Objects\CODE.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE CODE.C OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\CODE
+                    -.lst) TABS(2) OBJECT(.\Objects\CODE.obj)
+
+line level    source
+
+   1          
+   2          
+   3          #include<reg51.h>
+   4          
+   5          #define lcd P1
+   6           
+   7          sbit GAS=P2^3;
+   8          
+   9           
+  10          sbit rs=P2^0; //register select
+  11          sbit rw=P2^1; //RW
+  12          sbit en=P2^2; //enable
+  13           
+  14          void lcd_init();
+  15          void cmd(unsigned char);
+  16          void dat(unsigned char);
+  17          void delay();
+  18          void lcd_string(char *s);
+  19           
+  20          void main()
+  21          {
+  22   1          lcd_init();
+  23   1          lcd_string("LPG GAS DETECTOR");
+  24   1          while(1) {
+  25   2              if(GAS) {
+  26   3                  cmd(0xc0);
+  27   3                  lcd_string("               ");
+  28   3                
+  29   3                  delay();
+  30   3              } else {
+  31   3                  cmd(0xc0);
+  32   3                  lcd_string("LPG DETECTED !!");
+  33   3           delay();
+  34   3              }
+  35   2          }
+  36   1      }
+  37           
+  38          void lcd_init()
+  39          {
+  40   1          cmd(0x38);
+  41   1          cmd(0x0e);
+  42   1          cmd(0x06);
+  43   1          cmd(0x01);
+  44   1          cmd(0x80);
+  45   1      }
+  46           
+  47          void cmd(unsigned char a)
+  48          {
+  49   1          lcd=a;
+  50   1          rs=0;
+  51   1          rw=0;
+  52   1          en=1;
+  53   1          delay();
+  54   1          en=0;
+C51 COMPILER V9.59.0.0   CODE                                                              05/22/2022 13:15:05 PAGE 2   
+
+  55   1      }
+  56           
+  57          void dat(unsigned char b)
+  58          {
+  59   1          lcd=b;
+  60   1          rs=1;
+  61   1          rw=0;
+  62   1          en=1;
+  63   1          delay();
+  64   1          en=0;
+  65   1      }
+  66           
+  67          void lcd_string(char *s)
+  68          {
+  69   1          while(*s) {
+  70   2             dat(*s++);
+  71   2           }
+  72   1      }
+  73           
+  74          void delay()
+  75          {
+  76   1          unsigned int i;
+  77   1          for(i=0;i<20000;i++);
+  78   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    158    ----
+   CONSTANT SIZE    =     49    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
