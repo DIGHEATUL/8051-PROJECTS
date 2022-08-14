@@ -1,0 +1,3 @@
+".\Objects\CODE.obj" 
+TO ".\Objects\7 SEGMENT COUNTER 8051" 
+PRINT(".\Listings\7 SEGMENT COUNTER 8051.m51") RAMSIZE(256) 
